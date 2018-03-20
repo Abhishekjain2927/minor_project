@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @doctor.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @doctor.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @doctor.email %>
+</p>
+
+<p>
+  <strong>Mobile number:</strong>
+  <%= @doctor.mobile_number %>
+</p>
+
+<p>
+  <strong>Specalist in:</strong>
+  <%= @doctor.specalist_in %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @doctor.gender %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @doctor.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @doctor.state %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @doctor.address %>
+</p>
+
+ <div id="map"></div>
+    <script>
+      function initMap() {
+        var location = {lat: <%= @doctor.latitude %>, lng: <%= @doctor.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location
+        });
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbpehQ6J1am720EvBizzYo0oyadmn-SNg&callback=initMap">
+    </script>
+
+
+<style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  <%= link_to 'Edit', edit_admin_doctor_path(@doctor) %> |
+<%= link_to 'Back', admin_doctor_path %>
